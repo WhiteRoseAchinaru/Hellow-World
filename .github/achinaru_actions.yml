@@ -1,0 +1,22 @@
+name: GetHub Actions Example
+on:
+  pull_request:
+          push:
+               branches: 
+                         -master
+                         -develop
+       
+
+ jobs:
+     test:
+     name: Running unit test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: gautamkrishnar/blog-post-workflow@master
+        with:
+          node-version: ${{matrix.node-version}}
+          -name: Install
+           run: npm install
+           -name: Test
+            run: npm test
